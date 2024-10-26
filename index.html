@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Modal : Digital Midnight</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      dialog {
+        border: none;
+        border-radius: 12px;
+        padding: 0;
+      }
+      dialog::backdrop {
+        /* background-color: gold; */
+      }
+      button {
+        cursor: pointer;
+      }
+      .open,
+      .confirm {
+        border-radius: 16px;
+        border: none;
+        padding: 8px 12px;
+        background-color: dodgerblue;
+        color: white;
+      }
+      .open {
+        background-color: teal;
+      }
+      .close {
+        border: 0.5px solid lightgray;
+        border-radius: 16px;
+        padding: 8px 12px;
+      }
+      .modal {
+        padding: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <dialog>
+      <div class="modal">
+        <p>Hello World!!</p>
+        <button type="button" class="close">Close</button>
+        <button type="button" class="confirm">Confirm</button>
+      </div>
+    </dialog>
+
+    <button type="button" class="open">Open Modal</button>
+
+    <script>
+      const dialog = document.querySelector("dialog");
+      const openBtn = document.querySelector(".open");
+      const closeBtn = document.querySelector(".close");
+
+      openBtn.addEventListener("click", () => {
+        dialog.showModal();
+      });
+
+      closeBtn.addEventListener("click", () => {
+        dialog.close();
+      });
+
+      dialog.addEventListener("click", (event) => {
+        if (event.target == dialog) {
+          dialog.close();
+        }
+      });
+    </script>
+  </body>
+</html>
